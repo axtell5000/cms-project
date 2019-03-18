@@ -18,34 +18,44 @@
 
                         <div class="col-xs-6">
 
-                        <?php 
-                            if (isset($_POST['submit'])) {
-                                $cat_title = $_POST['cat_title'];
+                            <?php
+                                // Adding a category 
+                                if (isset($_POST['submit'])) {
+                                    $cat_title = $_POST['cat_title'];
 
-                                if($cat_title == "" || empty($cat_title)) {
-                                    echo "This field should not be empty";
-                                } else {
-                                    $query = "INSERT INTO categories(cat_title) ";
-                                    $query .= "VALUE('{$cat_title}') ";
+                                    if($cat_title == "" || empty($cat_title)) {
+                                        echo "This field should not be empty";
+                                    } else {
+                                        $query = "INSERT INTO categories(cat_title) ";
+                                        $query .= "VALUES('{$cat_title}') ";
 
-                                    $create_category_query = mysqli_query($connection, $query);
+                                        $create_category_query = mysqli_query($connection, $query);
 
-                                    if (!$create_category_query) {
-                                        die("Query Failed" . mysqli_error($connection));
+                                        if (!$create_category_query) {
+                                            die("Query Failed" . mysqli_error($connection));
+                                        }
                                     }
                                 }
-                            }
-                        ?>
-                        
-                        <form action="" method="post">
-                            <div class="form-group">
-                                <label for="cat_title">Add Category</label>
-                                <input class="form-control" type="text" name="cat_title" placeholder="Enter category">                            
-                            </div>
-                            <div class="form-group">
-                                <input class="btn btn-primary" type="submit" name="submit" value="Add Category">
-                            </div>
-                        </form>
+                            ?>
+                            
+                            <form action="" method="post">
+                                <div class="form-group">
+                                    <label for="cat_title">Add Category</label>
+                                    <input class="form-control" type="text" name="cat_title" placeholder="Enter category">                            
+                                </div>
+                                <div class="form-group">
+                                    <input class="btn btn-primary" type="submit" name="submit" value="Add Category">
+                                </div>
+                            </form>
+
+                            <?php 
+                                if (isset($_GET['edit'])) {
+                                    $cat_id = $_GET['edit'];                                    
+                                    include "includes/update_categories.php";
+                                }
+                            ?>
+                           
+                            
                         </div>
                         <div class="col-xs-6">
                            
@@ -54,6 +64,8 @@
                                     <tr>
                                         <th>Id</th>
                                         <th>Category Title</th>
+                                        <th></th>
+                                        <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -70,11 +82,13 @@
                                                     <td>{$cat_id}</td>
                                                     <td>{$cat_title}</td>
                                                     <td><a href='categories.php?delete={$cat_id}'>Delete</a></td>
+                                                    <td><a href='categories.php?edit={$cat_id}'>Edit</a></td>
                                                   </tr>";
                                         }                                
                                     ?>
 
-                                    <?php 
+                                    <?php
+                                        // Deleting a category  
                                         if (isset($_GET['delete'])) {
                                             $the_cat_id = $_GET['delete'];
                                             $query = "DELETE FROM categories WHERE cat_id = {$the_cat_id} ";
