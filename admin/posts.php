@@ -27,8 +27,8 @@
                             include "includes/add_post.php";
                             break;
 
-                          case '35':
-                            echo "nice 35";
+                          case 'edit_post':
+                            include "includes/edit_post.php";
                             break;
 
                           case '36':
