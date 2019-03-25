@@ -33,7 +33,9 @@
                         // Had to put it in the while loop all else everything crashes
                         while($row = mysqli_fetch_assoc($select_category_sidebar)) {
                             $cat_title = $row['cat_title'];
-                            echo "<li><a href='#'>{$cat_title}</a></li>";
+                            $cat_id = $row['cat_id'];
+
+                            echo "<li><a href='category.php?categoty=$cat_id'>{$cat_title}</a></li>";
                         }                                
                     ?>
  
