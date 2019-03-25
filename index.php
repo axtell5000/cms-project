@@ -27,7 +27,8 @@
                 $post_author = $row['post_author'];
                 $post_date = $row['post_date'];
                 $post_image = $row['post_image'];
-                $post_content = $row['post_content'];?> 
+                // substr - creating an except, up to 200 characters long
+                $post_content = substr($row['post_content'], 0, 200);?> 
 
                 <!-- Post code starts -->
                 <h1 class="page-header">
