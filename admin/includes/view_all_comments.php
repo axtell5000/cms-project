@@ -67,7 +67,7 @@
    // to approve comment
    if (isset($_GET['approve'])) {
     $the_comment_id =$_GET['approve'];
-
+   
     $query = "UPDATE comments SET comment_status = 'approved' WHERE comment_id=$the_comment_id";
     $approve_comment_query = mysqli_query($connection, $query);
     header("location: comments.php");
@@ -89,5 +89,8 @@
     $query = "DELETE FROM comments WHERE comment_id = {$the_comment_id}";
     $delete_query = mysqli_query($connection, $query);
     header("location: comments.php");
+
+    $query = "UPDATE posts SET post_comment_count = post_comment_count - 1 WHERE post_id = $comment_post_id ";
+    $update_comment_count = mysqli_query($connection, $query);
   }
 ?>
