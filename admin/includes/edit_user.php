@@ -72,24 +72,26 @@
   </div>
 
   <div class="form-group">
-    <select name="post_category" id="post_category">
+    <label for="user_role">User Role</label><br>
+    <select name="user_role" id="user_role">
     <?php
-      $query = "SELECT * FROM categories"; // constructing the query
-      $select_categories = mysqli_query($connection, $query);
+      $query = "SELECT * FROM users"; // constructing the query
+      $select_users = mysqli_query($connection, $query);
 
-      confirmQuery($select_categories);
+      confirmQuery($select_users);
 
       // Had to put it in the while loop all else everything crashes
-      while($row = mysqli_fetch_assoc($select_categories)) {
-          $cat_id = $row['cat_id'];
-          $cat_title = $row['cat_title'];
+      while($row = mysqli_fetch_assoc($select_users)) {
+          $user_id = $row['user_id'];
+          $user_role = $row['user_role'];
 
-          echo "<option value='{$cat_id}'>{$cat_title}</option>";
+          echo "<option value='{$user_id}'>{$user_role}</option>";
       }
     ?>
     
     </select>
   </div>
+      
 
 
   <div class="form-group">
