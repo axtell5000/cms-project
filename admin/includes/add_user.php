@@ -63,10 +63,10 @@
   </div>
 
   
-  <div class="form-group">
+  <!-- <div class="form-group">
     <label for="post_image">Post Image</label>
     <input type="file"  name="image">
-  </div>
+  </div> -->
 
   <div class="form-group">
     <input class="btn btn-primary" type="submit" name="create_user" value="Add User">
