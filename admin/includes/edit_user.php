@@ -36,7 +36,7 @@ if(isset($_POST['edit_user'])) {
   // move_uploaded_file($post_image_temp, "../images/$post_image");
   $query = "UPDATE users SET ";
   $query .="user_firstname  = '{$user_firstname}', ";
-  $query .="user_lastname  = '{$user_lastname }', "; 
+  $query .="user_lastname  = '{$user_lastname}', "; 
   $query .="username = '{$username}', ";
   $query .="user_password = '{$user_password}', ";
   $query .="user_email   = '{$user_email}', ";
