@@ -3,7 +3,13 @@
     ob_start();
     session_start();
     include "../includes/db.php";
-    include "functions.php" ?>
+    include "functions.php";
+    
+    // Checking session if it has user_role and if it does check what type of role
+    if (!isset($_SESSION['user_role'])) {
+      header('Location: ../index.php');      
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
