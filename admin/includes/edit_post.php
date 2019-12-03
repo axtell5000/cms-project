@@ -72,7 +72,8 @@
   </div>
 
   <div class="form-group">
-    <select name="post_category" id="post_category">
+		<label for="post_category">Post Category</label>
+    <select name="post_category" id="post_category" class="form-control">
     <?php
       $query = "SELECT * FROM categories"; // constructing the query
       $select_categories = mysqli_query($connection, $query);
@@ -98,9 +99,19 @@
   </div>
 
 
-  <div class="form-group">
-    <label for="post_status">Post Status</label>
-    <input value="<?php echo $post_status; ?>" type="text" class="form-control" name="post_status"> 
+	<div class="form-group">
+		<label for="post_status">Post Status</label>
+		<select name="post_status" id="post_status" class="form-control">
+			<option value="<?php echo $post_status; ?>"><?php echo $post_status; ?></option>
+			<?php 
+				if ($post_status === 'published') {
+					echo "<option value='draft'>Draft</option>";
+				} else {
+					echo "<option value='published'>Publish</option>";
+				}
+			
+			?>
+		</select>
   </div>  
   
   
