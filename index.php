@@ -1,12 +1,12 @@
 <?php 
   include "includes/db.php";
   include "includes/header.php";
+
+  // Navigation
+  include "includes/navigation.php";
+  
 ?>
 
-<!-- Navigation -->
-<?php 
-  include "includes/navigation.php";
-?>
 
 <!-- Page Content -->
 <div class="container">
@@ -33,12 +33,6 @@
                 
                 if($post_status === 'published') {
                  ?> 
-
-                  <!-- Post code starts -->
-                  <h1 class="page-header">
-                      Page Heading
-                      <small>Secondary Text</small>
-                  </h1>
 
                   <!-- First Blog Post -->
                   <h2>
