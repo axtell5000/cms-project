@@ -21,6 +21,8 @@
     $create_user_query = mysqli_query($connection, $query);
     
     confirmQuery($create_user_query);
+
+    echo "<div class='alert alert-success' role='alert'> User has been created successfully <a href='users.php'> View User </a> </div>";
   }
 
 ?>
