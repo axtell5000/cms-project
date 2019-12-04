@@ -22,6 +22,11 @@
     $create_post_query = mysqli_query($connection, $query);
     
     confirmQuery($create_post_query);
+
+    $the_post_id = mysqli_insert_id($connection);
+
+    echo "<p class='bg-success'>Post Created. <a href='../post.php?p_id={$the_post_id}' title='View Post'>View Post</a> or 
+    <a href='posts.php' title='Edit More Posts'>Edit More Posts</a></p>";
   }
 
 ?>
@@ -31,12 +36,12 @@
   
   <div class="form-group">
     <label for="title">Post Title</label>
-    <input type="text" class="form-control" name="title">
+    <input type="text" class="form-control" id="title" name="title">
   </div>
 
   <div class="form-group">
-    <label for="post_category">Category</label><br>
-    <select name="post_category" id="post_category">
+    <label for="post_category">Category</label>
+    <select name="post_category" id="post_category" class="form-control">
     <?php
       $query = "SELECT * FROM categories"; // constructing the query
       $select_categories = mysqli_query($connection, $query);
@@ -58,29 +63,34 @@
 
   <div class="form-group">
     <label for="post_author">Post Author</label>
-    <input type="text" class="form-control" name="post_author"> 
+    <input type="text" class="form-control" id="post_author" name="post_author"> 
   </div>
 
 
   <div class="form-group">
     <label for="post_status">Post Status</label>
-    <input type="text" class="form-control" name="post_status"> 
+    <select name="post_status" id="post_status" class="form-control">
+      <option value="draft">Select Option</option>
+      <option value="published">Publish</option>
+      <option value="draft">Draft</option>
+    </select>
+    
   </div>  
   
   
   <div class="form-group">
     <label for="post_image">Post Image</label>
-    <input type="file"  name="image">
+    <input type="file" name="image" id="post_image">
   </div>
 
   <div class="form-group">
     <label for="post_tags">Post Tags</label>
-    <input type="text" class="form-control" name="post_tags">
+    <input type="text" class="form-control" id="post_tags" name="post_tags">
   </div>
   
   <div class="form-group">
     <label for="post_content">Post Content</label>
-    <textarea class="form-control "name="post_content" id="body" cols="30" rows="20"></textarea>
+    <textarea class="form-control "name="post_content" id="post_content" id="body" cols="30" rows="20"></textarea>
   </div>
 
   <div class="form-group">
