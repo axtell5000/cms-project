@@ -26,7 +26,10 @@
 						}
 					?>
 					<li>
-						<a href="admin">Admin</a>
+						<a href="admin" title="Admin">Admin</a>
+					</li>
+					<li>
+						<a href="registration.php" title="Registration">Registration</a>
 					</li>
 
 					<?php

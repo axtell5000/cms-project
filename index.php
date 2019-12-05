@@ -55,9 +55,7 @@
                   <?php } 
               
               }
-              if($post_status !== 'published') { 
-                echo "<h1 class='text-center'>No Posts. Sorry</h1>";
-              } 
+              
             ?>
 
 
