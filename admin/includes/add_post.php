@@ -99,3 +99,8 @@
 
 
 </form>
+
+<!-- Did it like this to avoid error when not on a form page -->
+<<script>
+  initializeckEditor(); 
+</script>

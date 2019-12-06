@@ -1,12 +1,6 @@
 
 $(document).ready(function(){
 
-	// initializing ck editor
-	ClassicEditor
-	.create( document.querySelector( '#body' ) )
-	.catch( error => {
-			console.error( error );
-	} );
 
 	// checking checkboxes
 	$('#selectAllBoxes').click(function (event) {
@@ -21,5 +15,12 @@ $(document).ready(function(){
 		}
 	});
 
+	// for loader
+	var div_box = "<div id='load-screen'><div id='loading'></div></div>";
+	$("body").prepend(div_box);
+	$('#load-screen').delay(700).fadeOut(600, function(){		
+		this.remove();
+	});
+	
 });
 

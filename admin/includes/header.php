@@ -28,6 +28,7 @@
 
 		<!-- Custom CSS -->
 		<link href="css/sb-admin.css" rel="stylesheet">
+		<link href="css/loader.css" rel="stylesheet">
 
 		<!-- Custom Fonts -->
 		<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -41,6 +42,18 @@
 		<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
 		<script src="https://cdn.ckeditor.com/ckeditor5/15.0.0/classic/ckeditor.js"></script>
+
+			<!-- Put it in the header, so it will be ready for the other pages, it wasnt working in footer -->
+		<script>
+					// initializing ck editor
+				function initializeckEditor() {
+					ClassicEditor
+					.create( document.querySelector( '#body' ) )
+					.catch( function (error) {
+							console.error( error );
+					} );
+				}
+		</script>
 
 
 	</head>
