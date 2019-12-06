@@ -63,7 +63,8 @@
         <th>Date</th>
         <th>View Post</th>
         <th>Edit</th>   
-        <th>Delete</th>                          
+        <th>Delete</th>
+        <th>Post Views Count</th>                          
       </tr>
     </thead>
     <tbody>
@@ -83,6 +84,7 @@
         $post_tags = $row['post_tags'];
         $post_comment_count = $row['post_comment_count'];
         $post_date = $row['post_date'];
+        $post_views_count = $row['post_views_count'];
 
         echo "<tr>";
         ?>
@@ -108,7 +110,8 @@
           echo "<td>{$post_date}</td>";
           echo "<td><a href='../post.php?p_id={$post_id}' title='View Post'>View Post</a></td>"; 
           echo "<td><a href='posts.php?source=edit_post&p_id={$post_id}' title='Edit Post'>Edit</a></td>";    
-          echo "<td><a onClick=\"javascript: return confirm('Are you sure you want to delete'); \" href='posts.php?delete={$post_id}' title='Delete Post'>Delete</a></td>";      
+          echo "<td><a onClick=\"javascript: return confirm('Are you sure you want to delete'); \" href='posts.php?delete={$post_id}' title='Delete Post'>Delete</a></td>"; 
+          echo "<td>$post_views_count</td>";     
           echo "</tr>";                          }    
         ?>                    
     </tbody>
@@ -121,4 +124,5 @@
     $delete_query = mysqli_query($connection, $query);
     header("Location: view_all_posts.php");
   }
+
 ?>
