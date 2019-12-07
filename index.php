@@ -16,8 +16,31 @@
 		<!-- Blog Entries Column -->
 		<div class="col-md-8">
 
-			<?php 
-				$query = "SELECT * FROM posts"; // constructing the query
+			<?php
+				// For pagination code - start
+				if (isset($_GET['page'])) {
+					$page = $_GET['page'];
+				} else {
+					$page = "";
+				}
+
+				if ($page == "" || $page == 1) {
+					$page1 = 0;
+				} else {
+					$page1 = ($page * 5) - 5;
+				}
+				// For pagination code - end
+
+				// getting number of rows
+				$post_query_count = "SELECT * FROM posts";
+				$find_count = mysqli_query($connection, $post_query_count);
+				$count = mysqli_num_rows($find_count);
+
+				// calculate how many pages if we want 5 posts per page from above query
+				$count = ceil($count / 5); // ceil rounds up
+
+
+				$query = "SELECT * FROM posts LIMIT $page1, 5"; // constructing the query
 				$select_all_posts_query = mysqli_query($connection, $query);
 							
 				// Had to put it in the while loop all else everything crashes
@@ -33,7 +56,6 @@
 					
 					if($post_status === 'published') {
 						?> 
-
 						<!-- First Blog Post -->
 						<h2>
 								<a href="post.php?p_id=<?php echo $post_id; ?>" title="<?php echo $post_title; ?>"><?php echo $post_title; ?></a>
@@ -63,12 +85,17 @@
 
 			<!-- Pager -->
 			<ul class="pager">
-				<li class="previous">
-					<a href="#">&larr; Older</a>
-				</li>
-				<li class="next">
-					<a href="#">Newer &rarr;</a>
-				</li>
+				<?php 
+					for ($i = 1; $i <= $count; $i++) {
+
+						if ($i == $page) {
+							echo "<li><a class='active-link' href='index.php?page={$i}'>{$i}</a></li>";
+						} else {
+							echo "<li><a href='index.php?page={$i}'>{$i}</a></li>";
+						}
+						
+					}
+				?>
 			</ul>
 
 		</div>
