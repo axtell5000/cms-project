@@ -10,22 +10,25 @@
 
 		// checking if user exists in db already
 		if (!empty($username) && !empty($email) && !empty($password)) {
+
 			// cleaning
 			$username = mysqli_real_escape_string($connection, $username);
 			$email = mysqli_real_escape_string($connection, $email);
 			$password = mysqli_real_escape_string($connection, $password);
 
-			$query = "SELECT randSalt FROM users";
-			$select_randsalt_query = mysqli_query($connection, $query);
+			$password = password_hash($password, PASSWORD_BCRYPT, array('cost' => 12));
 
-			if (!$select_randsalt_query) {
-				die("Query Failed" . mysqli_error($connection));
-			}
+			// $query = "SELECT randSalt FROM users";
+			// $select_randsalt_query = mysqli_query($connection, $query);
 
-			$row = mysqli_fetch_array($select_randsalt_query);
-			$salt = $row['randSalt'];
+			// if (!$select_randsalt_query) {
+			// 	die("Query Failed" . mysqli_error($connection));
+			// }
 
-			$password = crypt($password, $salt);
+			// $row = mysqli_fetch_array($select_randsalt_query);
+			// $salt = $row['randSalt'];
+
+			// $password = crypt($password, $salt);
 
 			$query = "INSERT INTO users (username, user_email, user_password, user_role) ";
 			$query .= "VALUES('{$username}', '{$email}', '{$password}', 'subscriber')";

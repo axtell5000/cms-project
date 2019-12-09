@@ -22,8 +22,7 @@
   if(isset($_POST['update_profile'])) {    
     $user_firstname = $_POST['user_firstname'];
     $user_lastname  = $_POST['user_lastname'];
-    $user_role      = $_POST['user_role'];
-  
+    
     // $post_image        = $_FILES['image']['name'];
     // $post_image_temp   = $_FILES['image']['tmp_name'];
   
@@ -39,7 +38,6 @@
     $query .="username = '{$username}', ";
     $query .="user_password = '{$user_password}', ";
     $query .="user_email   = '{$user_email}', ";
-    $query .="user_role= '{$user_role}' ";
     $query .= "WHERE username = '{$username}' ";
   
     $edit_user_query = mysqli_query($connection,$query);
@@ -77,21 +75,6 @@
                 <input type="text" class="form-control" value="<?php echo $user_lastname; ?>" name="user_lastname" id="user_lastname">
               </div>
 
-              <div class="form-group">
-                <label for="user_role">User Role</label><br>
-                <select name="user_role" id="user_role">
-                  <option value="subscriber"><?php echo $user_role ?></option>
-                  <?php 
-                    if ($user_role === 'admin') {
-                      echo "<option value='subscriber'>subscriber</option>";
-                    } else {
-                      echo "<option value='admin'>admin</option>";
-                    }
-                  ?>
-                  
-                  
-                </select>
-              </div>
                   
               <div class="form-group">
                 <label for="user_email">Email</label>
@@ -105,7 +88,7 @@
 
               <div class="form-group">
                 <label for="user_password">Password</label>
-                <input type="password" class="form-control" value="<?php echo $user_password; ?>" name="user_password" id="user_password">
+                <input autocomplete="off" type="password" class="form-control" name="user_password" id="user_password">
               </div>
 
 
