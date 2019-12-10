@@ -3,8 +3,8 @@
   session_start(); // starting session functionality
   
   if (isset($_POST['login'])) {
-    echo $username = $_POST['username'];
-    echo $password = $_POST['password'];
+    echo $username = escape($_POST['username']);
+    echo $password = escape($_POST['password']);
 
     $username = mysqli_real_escape_string($connection, $username); // cleaning the data
     $password = mysqli_real_escape_string($connection, $password); // cleaning the data
