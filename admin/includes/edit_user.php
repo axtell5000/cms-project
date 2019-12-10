@@ -65,7 +65,7 @@ if(isset($_GET['edit_user'])) {
   }
     
 } else {
-  header("Location: index.php")
+  header("Location: index.php");
 }
 
 ?>
