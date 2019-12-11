@@ -21,6 +21,14 @@ $(document).ready(function(){
 	$('#load-screen').delay(700).fadeOut(600, function(){		
 		this.remove();
 	});
+
+	// For modal pop up
+	$('.delete-link').on('click', function() {
+		var id = $(this).attr('rel');
+		var delete_url = "posts.php?delete=" + id;
+		$('.modal-delete-link').attr('href', delete_url);
+		$('#myModal').modal('show');
+	});
 	
 });
 

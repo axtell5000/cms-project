@@ -1,5 +1,5 @@
 
-<?php
+<?php  
 
   if(isset($_POST['create_post'])) {
     $post_title        = escape($_POST['title']);

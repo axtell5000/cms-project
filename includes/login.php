@@ -1,5 +1,6 @@
 <?php 
   include "db.php";
+  include "../admin/functions.php";
   session_start(); // starting session functionality
   
   if (isset($_POST['login'])) {

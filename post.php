@@ -1,7 +1,8 @@
 <?php 
- include "includes/db.php";
+ 	include "includes/db.php";
 	include "includes/header.php";
 	include "includes/navigation.php";
+	include "./admin/functions.php";
 ?>
 
 <!-- Page Content -->
@@ -58,10 +59,10 @@
 				// Comments start
 				if (isset($_POST['create_comment'])) {
 
-					$the_post_id = $_GET['p_id'];
-					$comment_author = $_POST['comment_author'];
-					$comment_email = $_POST['comment_email'];
-					$comment_content = $_POST['comment_content'];
+					$the_post_id = escape($_GET['p_id']);
+					$comment_author = escape($_POST['comment_author']);
+					$comment_email = escape($_POST['comment_email']);
+					$comment_content = escape($_POST['comment_content']);
 
 					// for form validation
 					if (!empty($comment_author) && !empty($comment_email) && !empty($comment_content)) {

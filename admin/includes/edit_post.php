@@ -1,5 +1,6 @@
 <?php
-
+  include("../functions.php");
+  
   if (isset($_GET['p_id'])) {
     $the_post_id =  $_GET['p_id'];
   }   

@@ -1,5 +1,5 @@
 
-<?php
+<?php  
 
   if(isset($_POST['create_user'])) {    
     $user_firstname = escape($_POST['user_firstname']);
