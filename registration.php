@@ -63,7 +63,7 @@
 						<form role="form" action="registration.php" method="post" id="login-form" autocomplete="off">
 							<h6 class="text-center"><?php echo $message; ?></h6>
 							<div class="form-group">
-								<label for="username" class="sr-only">username</label>
+								<label for="username" class="sr-only">Username</label>
 								<input type="text" name="username" id="username" class="form-control" placeholder="Enter Desired Username">
 							</div>
 								<div class="form-group">

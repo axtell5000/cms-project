@@ -31,6 +31,9 @@
 					<li>
 						<a href="registration.php" title="Registration">Registration</a>
 					</li>
+					<li>
+						<a href="contact.php" title="Contact">Contact</a>
+					</li>
 
 					<?php
 					// session_start();
