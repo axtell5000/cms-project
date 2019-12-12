@@ -32,29 +32,33 @@
 				// For pagination code - end
 
 				// getting number of rows
-				$post_query_count = "SELECT * FROM posts";
+				$post_query_count = "SELECT * FROM posts WHERE post_status = 'published'";
 				$find_count = mysqli_query($connection, $post_query_count);
 				$count = mysqli_num_rows($find_count);
 
-				// calculate how many pages if we want 5 posts per page from above query
-				$count = ceil($count / 5); // ceil rounds up
-
-
-				$query = "SELECT * FROM posts LIMIT $page1, 5"; // constructing the query
-				$select_all_posts_query = mysqli_query($connection, $query);
-							
-				// Had to put it in the while loop all else everything crashes
-				while($row = mysqli_fetch_assoc($select_all_posts_query)) {
-					$post_id = $row['post_id'];
-					$post_title = $row['post_title'];
-					$post_user = $row['post_user'];
-					$post_date = $row['post_date'];
-					$post_image = $row['post_image'];
-					// substr - creating an except, up to 200 characters long
-					$post_content = substr($row['post_content'], 0, 200);
-					$post_status = $row['post_status'];
+				if ($count < 1) {
 					
-					if($post_status === 'published') {
+					echo "<br><br><br><h1 class='text-center'>No Posts available</h1>";
+				} else {
+
+					// calculate how many pages if we want 5 posts per page from above query
+					$count = ceil($count / 5); // ceil rounds up
+
+
+					$query = "SELECT * FROM posts LIMIT $page1, 5"; // constructing the query
+					$select_all_posts_query = mysqli_query($connection, $query);
+								
+					// Had to put it in the while loop all else everything crashes
+					while($row = mysqli_fetch_assoc($select_all_posts_query)) {
+						$post_id = $row['post_id'];
+						$post_title = $row['post_title'];
+						$post_user = $row['post_user'];
+						$post_date = $row['post_date'];
+						$post_image = $row['post_image'];
+						// substr - creating an except, up to 200 characters long
+						$post_content = substr($row['post_content'], 0, 200);
+						$post_status = $row['post_status'];					
+					
 						?> 
 						<!-- First Blog Post -->
 						<h2>

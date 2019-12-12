@@ -1,3 +1,6 @@
+<?php
+	if (session_status() == PHP_SESSION_NONE) session_start(); ?>
+
 <div class="col-md-4">
 
 	<!-- Blog Search Well -->
@@ -18,6 +21,11 @@
 
 	<!-- Login -->
 	<div class="well">
+		<?php if(isset($_SESSION['user_role'])): ?>
+		<h4>Logged in as <?php echo $_SESSION['username']; ?></h4>
+		<a href="admin/includes/logout.php" class="btn btn-primary" title="Logout">Logout</a>
+		<?php else: ?>
+
 		<h4>Login</h4>
 		<form action="includes/login.php" method="post">
 			<div class="form-group">
@@ -31,6 +39,9 @@
 			</div>
 		</form><!--Search form -->
 		<!-- /.input-group -->
+		<?php endif; ?>
+
+		
 	</div>
 
 	<!-- Blog Categories Well -->

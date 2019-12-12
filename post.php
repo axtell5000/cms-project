@@ -53,9 +53,7 @@
 				<?php 
 				}
 
-			} else {
-					header('Location: index.php');
-				}
+			
 				// Comments start
 				if (isset($_POST['create_comment'])) {
 
@@ -139,8 +137,12 @@
 					</div>
 				</div>   
 
-			<?php } ?>
+			<?php }
 
+			} else {
+					header('Location: index.php');
+				} 
+			?>
 					
 		</div>
 
