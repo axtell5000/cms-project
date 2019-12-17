@@ -66,4 +66,35 @@
       header("Location: categories.php");
     }
   }
+
+  function recordCount($table) {
+    global $connection;
+    $query = "SELECT * FROM " . $table;
+    $select_all_posts = mysqli_query($connection, $query);
+    $result = mysqli_num_rows($select_all_posts);
+
+    // checking if no item in database
+    if ($result < 1) {
+      return 0;
+      
+      if(!$result){
+        die('QUERY FAILED!!! ' . mysqli_error($connection));
+      }
+    } else {
+        
+      if(!$result){
+        die('QUERY FAILED!!! ' . mysqli_error($connection));
+      }
+      
+      return $result;
+    }
+  }
+
+  function checkStatus($table, $column, $status) {
+    global $connection;
+    
+    $query = "SELECT * FROM $table WHERE $column = '{$status}'";
+    $result = mysqli_query($connection, $query);
+    return mysqli_num_rows($result);
+  }
 ?>
